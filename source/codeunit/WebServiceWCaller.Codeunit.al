@@ -5,7 +5,7 @@ namespace ALPrjWebService.ALPrjWebService;
 // 2. HttpResponseMessage: This stores the response from the web service call.
 // 3. JsonObject: This is used to parse JSON objects.
 // 4. JsonArray: This is used to parse JSON arrays.
-// 5. Get(): This method retrieves data from the JSON response. In this case, it is used to get the list of users.
+// 5. Get(): This method retrieves data from the JSON response. In this case, it is used to get the list of users as a Json Array. 
 
 codeunit 50100 "WebServiceWCaller"
 {
