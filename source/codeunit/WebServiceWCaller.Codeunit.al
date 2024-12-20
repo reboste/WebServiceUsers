@@ -17,7 +17,7 @@ codeunit 50100 "WebServiceWCaller"
         JsonResponseArray: JsonArray; // Cambiamo JsonResponse in JsonArray
         JsonTokenItem: JsonToken;
         JsonObject: JsonObject;
-        TmpNestedJasonObject: JsonObject;
+        TmpNestedJsonObject: JsonObject;
         i: Integer;
         NumElementsFoundMsg: Label 'Found %1 record', Comment = '%1=num of record imported from web services';
 
@@ -65,14 +65,14 @@ codeunit 50100 "WebServiceWCaller"
                     Evaluate(TabWeb.Website, GetValueByToken(JsonObject, 'website').AsValue().AsText());
                     Evaluate(TabWeb.Email, GetValueByToken(JsonObject, 'email').AsValue().AsText());
                     Evaluate(TabWeb.Username, GetValueByToken(JsonObject, 'username').AsValue().AsText());
+                    //this is a nested JsonObject
+                    TmpNestedJsonObject := GetValueByToken(JsonObject, 'address').AsObject(); //nested object
+                    Evaluate(TabWeb.Suite, GetValueByToken(TmpNestedJsonObject, 'suite').AsValue().AsText());
+                    Evaluate(TabWeb.City, GetValueByToken(TmpNestedJsonObject, 'city').AsValue().AsText());
+                    Evaluate(TabWeb.Zipcode, GetValueByToken(TmpNestedJsonObject, 'zipcode').AsValue().AsText());
+                    Evaluate(TabWeb.Street, GetValueByToken(TmpNestedJsonObject, 'street').AsValue().AsText());
 
-                    TmpNestedJasonObject := GetValueByToken(JsonObject, 'address').AsObject(); //nested object
-                    Evaluate(TabWeb.Suite, GetValueByToken(TmpNestedJasonObject, 'suite').AsValue().AsText());
-                    Evaluate(TabWeb.City, GetValueByToken(TmpNestedJasonObject, 'city').AsValue().AsText());
-                    Evaluate(TabWeb.Zipcode, GetValueByToken(TmpNestedJasonObject, 'zipcode').AsValue().AsText());
-                    Evaluate(TabWeb.Street, GetValueByToken(TmpNestedJasonObject, 'street').AsValue().AsText());
-
-
+                    //no
                     //Evaluate(TabWeb.City, GetValueByToken(JsonObject, 'city').AsValue().AsText());
 
                     //end;
